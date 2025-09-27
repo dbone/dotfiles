@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.09 for dbone on Thu Nov 14 14:53:14 2024.
+# Written by xscreensaver-settings 6.10 for dbone on Sat Sep 27 07:17:35 2025.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -14,8 +14,8 @@ splash:		True
 splashDuration:	0:00:05
 demoCommand:	xscreensaver-settings
 nice:		10
-fade:		True
-unfade:		True
+fade:		False
+unfade:		False
 fadeSeconds:	0:00:03
 ignoreUninstalledPrograms:False
 dpmsEnabled:	False
@@ -37,7 +37,7 @@ textFile:
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	1331,686 2516,715
+settingsGeom:	10,1101 2516,767
 
 programs:								      \
 -				maze --root				    \n\
@@ -128,7 +128,7 @@ programs:								      \
 -				squiral --root				    \n\
 -				wander --root				    \n\
 -				xflame --root				    \n\
-				xmatrix --root --small --no-trace	      \
+				xmatrix --root --no-trace		      \
 				  --no-knock-knock --delay 27049	      \
 				  --density 52				    \n\
 - GL: 				gflux --root				    \n\
@@ -247,7 +247,7 @@ programs:								      \
 - GL: 				kaleidocycle --root			    \n\
 - GL: 				quasicrystal --root			    \n\
 - GL: 				unknownpleasures --root			    \n\
-				binaryring --root			    \n\
+-				binaryring --root			    \n\
 - GL: 				cityflow --root				    \n\
 - GL: 				geodesicgears --root			    \n\
 - GL: 				projectiveplane --root			    \n\
@@ -283,7 +283,7 @@ programs:								      \
 - GL: 				gibson --root				    \n\
 - GL: 				headroom --root				    \n\
 - GL: 				sphereeversion --root			    \n\
-				binaryhorizon --root			    \n\
+-				binaryhorizon --root			    \n\
 -				marbling --root				    \n\
 - GL: 				chompytower --root			    \n\
 - GL: 				hextrail --root				    \n\
@@ -296,6 +296,10 @@ programs:								      \
 - GL: 				skulloop --root				    \n\
 - GL: 				highvoltage --root			    \n\
 - GL: 				kallisti --root				    \n\
+- GL: 				klondike --root				    \n\
+- GL: 				dumpsterfire --root			    \n\
+- GL: 				hopffibration --root			    \n\
+- GL: 				platonicfolding --root			    \n\
 
 
 pointerHysteresis:  10
