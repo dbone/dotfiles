@@ -1,0 +1,11 @@
+--target=~/
+--dotfiles
+--ignore=.stowrc
+--ignore=DS_Store
+--ignore=.git
+--ignore=.gitignore
+--ignore=.gitmodules
+--ignore=spacemacs.git
+--ignore=README.md
+--ignore=install_ohmyzsh.sh
+--ignore=stow_all.sh
