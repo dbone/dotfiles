@@ -10,7 +10,7 @@ font-family-bold-italic        = "Iosevka Nerd Font Mono Bold Italic"
 #font-family-italic             = "Terminess Nerd Font Mono Italic"
 #font-family-bold-italic        = "Terminess Nerd Font Mono Bold Italic"
 
-font-size                       = 18
+font-size                       = 16
 #font-feature                    = -calt
 #font-feature                    = -liga
 #font-feature                    = -dlig
