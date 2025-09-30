@@ -1,12 +1,14 @@
+font-family                    = ""
 font-family                    = "Iosevka Nerd Font Mono"
 font-family-bold               = "Iosevka Nerd Font Mono Bold"
 font-family-italic             = "Iosevka Nerd Font Mono Italic"
 font-family-bold-italic        = "Iosevka Nerd Font Mono Bold Italic"
-font-family                    = ""
-font-family                    = "Terminess Nerd Font Mono"
-font-family-bold               = "Terminess Nerd Font Mono Bold"
-font-family-italic             = "Terminess Nerd Font Mono Italic"
-font-family-bold-italic        = "Terminess Nerd Font Mono Bold Italic"
+
+#font-family                    = ""
+#font-family                    = "Terminess Nerd Font Mono"
+#font-family-bold               = "Terminess Nerd Font Mono Bold"
+#font-family-italic             = "Terminess Nerd Font Mono Italic"
+#font-family-bold-italic        = "Terminess Nerd Font Mono Bold Italic"
 
 font-size                       = 18
 #font-feature                    = -calt
