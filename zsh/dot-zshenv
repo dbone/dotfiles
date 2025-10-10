@@ -12,7 +12,11 @@ export LSCOLORS LS_COLORS EDITOR HISTSIZE LANG
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 
-export CUDA_VISIBLE_DEVICES=-1
+#export CUDA_VISIBLE_DEVICES=-1
+
+export ROCM_PATH=/opt/rocm
+#export HSA_OVERRIDE_GFX_VERSION=10.3.0
+export HSA_OVERRIDE_GFX_VERSION=11.0.0
 
 if [ -e $HOME/.cargo ]; then
     source "$HOME/.cargo/env"

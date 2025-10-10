@@ -32,6 +32,10 @@ if [ -e $HOME/.atuin ]; then
   PATHS=("$HOME/.atuin/bin" $PATHS[@])
 fi
 
+if [ -e $HOME/.pyenv/shims ]; then
+  PATHS=("$HOME/.pyenv/shims" $PATHS[@])
+fi
+
 if [ -e /opt/neovim ]; then
   PATHS=("/opt/neovim/bin" $PATHS[@])
   export EDITOR=nvim
@@ -260,3 +264,11 @@ add-zsh-hook precmd _umask_hook
 #fi
 
 #eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+
+if [ -e $HOME/.pyenv/shims ]; then
+  PATHS=("$HOME/.pyenv/shims" $PATHS[@])
+fi
+
+UNIQPATHS=(${(u)PATHS[@]})
+PATH=${(j.:.)UNIQPATHS}
+export PATH

@@ -41,7 +41,7 @@ gtk-titlebar-style             = native
 
 adjust-cursor-thickness        = 3
 adjust-underline-position      = 3
-adjust-font-baseline           = "-10%"
+adjust-font-baseline           = "-5%"
 adjust-cell-height             = "10%"
 bold-is-bright                 = true
 cursor-style                   = block

@@ -47,6 +47,7 @@ fi
 # turn off the cpu default bell
 if [ -f /usr/bin/xset ]; then
   xset -b
+  xset dpms 0 0 600 # 1200
 fi
 
 # enable window compositing
@@ -68,6 +69,11 @@ if [ -f /usr/bin/gnome-keyring-daemon ]; then
   dbus-update-activation-environment --systemd DISPLAY
   eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
   export SSH_AUTH_SOCK
+fi
+
+# if the xscreensaver config file exists start xscreensaver
+if [ -f ~/.xscreensaver ]; then
+  /usr/bin/xscreensaver -nosplash &
 fi
 
 # start i3 and keep it running

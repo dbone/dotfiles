@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.10 for dbone on Sat Sep 27 07:17:35 2025.
+# Written by xscreensaver-settings 6.10 for dbone on Tue Oct  7 20:24:14 2025.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -37,7 +37,7 @@ textFile:
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	10,1101 2516,767
+settingsGeom:	0,33 2516,845
 
 programs:								      \
 -				maze --root				    \n\
@@ -128,9 +128,9 @@ programs:								      \
 -				squiral --root				    \n\
 -				wander --root				    \n\
 -				xflame --root				    \n\
-				xmatrix --root --no-trace		      \
-				  --no-knock-knock --delay 27049	      \
-				  --density 52				    \n\
+				xmatrix --root --small --no-trace	      \
+				  --no-knock-knock --delay 58197	      \
+				  --density 19				    \n\
 - GL: 				gflux --root				    \n\
 -				nerverot --root				    \n\
 -				xrayswarm --root			    \n\
