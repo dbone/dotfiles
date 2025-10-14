@@ -272,3 +272,9 @@ fi
 UNIQPATHS=(${(u)PATHS[@]})
 PATH=${(j.:.)UNIQPATHS}
 export PATH
+
+if [[ -e "$HOME/.venv" ]]; then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    source "$HOME/.venv/bin/activate"
+fi
+
