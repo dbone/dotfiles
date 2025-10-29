@@ -63,6 +63,7 @@ This function should only modify configuration layer settings."
        json
        sql
        (java :variables java-backend 'lsp)
+       ;;maven
        (dap :variables
          dap-enable-ui-controls nil
          dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))

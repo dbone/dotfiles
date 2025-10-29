@@ -55,7 +55,7 @@ alias signal-desktop='signal-desktop --password-store="gnome-libsecret"'
 alias duh='du -hs --si * 2>&1 | sort -h | grep -v "Operation not permitted"'
 alias dug='du -sh * 2>&1 | grep -v "Operation not permitted"'
 
-alias wg4c='wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64)" --quiet -P 4chanPics -nd -r -l 1 -H -D "i.4cdn.org,is2.4chan.org" -A png,gif,jpg,jpeg,webm,mp4'
+alias wg4c='wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64)" --quiet -P 4chanPics -nd -r -l 1 -H -D "i.4cdn.org,is2.4chan.org" -A png,gif,jpg,jpeg,webp,webm,mp4'
 
 ###############
 # Java Switcher
