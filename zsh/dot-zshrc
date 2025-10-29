@@ -102,9 +102,6 @@ DISABLE_UPDATE_PROMPT="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Disable less history file
-export LESSHISTFILE=-
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -275,6 +272,13 @@ fi
 UNIQPATHS=(${(u)PATHS[@]})
 PATH=${(j.:.)UNIQPATHS}
 export PATH
+
+if [[ -e "$HOME/.venv" ]]; then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    source "$HOME/.venv/bin/activate"
+fi
+
+export NODE_PATH="$HOME/.node"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

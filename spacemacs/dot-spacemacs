@@ -63,7 +63,6 @@ This function should only modify configuration layer settings."
        json
        sql
        (java :variables java-backend 'lsp)
-       ;;maven
        (dap :variables
          dap-enable-ui-controls nil
          dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))
@@ -283,7 +282,7 @@ It should only modify the values of Spacemacs settings."
     ;; a non-negative integer (pixel size), or a floating-point (point size).
     ;; Point size is recommended, because it's device independent. (default 10.0)
     dotspacemacs-default-font '("IosevkaTerm Nerd Font Mono"
-                                 :size 15.0
+                                 :size 16.0
                                  :weight normal
                                  :width normal)
     ;; dotspacemacs-default-font '("JetBrainsMono Nerd Font Mono"
