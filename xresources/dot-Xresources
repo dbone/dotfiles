@@ -1,4 +1,5 @@
-Xft.dpi: 100
+! Xft.dpi: 100
+Xft.dpi: 96
 
 ! Font for regular texts.
 ! Font names are case-insensitive.
@@ -13,3 +14,5 @@ xscreensaver-auth.default.Dialog.foreground: #ffffff
 
 Xcursor.theme: Bibata-Modern-Ice
 Xcursor.size: 24
+
+emacs*menubar*font: OpenSans-18

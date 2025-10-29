@@ -8,31 +8,42 @@
 
 general {
         colors = true
-        color_good = "#A3BE8C"
-        color_degraded = "#D8DEE9"
-        color_bad = "#BF616A"
+        color_good = "#afafff"
+        color_degraded = "#bc77df"
+        color_bad = "#ff0000"
         interval = 5
-        separator = "  "
+        separator = "|"
 }
 
 #order += "ipv6"
+order += "volume master"
+order += "cpu_usage"
+order += "load"
+#order += "read_file uptime"
 order += "ipv4"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "battery all"
+#order += "battery all"
 order += "disk /"
-order += "load"
 order += "memory"
 order += "tztime local"
 
+volume master {
+       format = "[ ♪: %volume ]"
+       format_muted = "[ ♪: muted (%volume) ]"
+       device = "pulse:alsa_output.pci-0000_7b_00.6.analog-stereo"
+#       mixer = "Master"
+#       mixer_idx = 0
+}
+
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = "[ W: (%quality at %essid) %ip ]"
+        format_down = "[ W: ☹ ]"
 }
 
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = "[ E: %ip (%speed) ]"
+        format_down = "[ E: ☹ ]"
 }
 
 battery all {
@@ -40,19 +51,28 @@ battery all {
 }
 
 disk "/" {
-        format = "%avail"
+        format = "[ Disk (/): %avail ]"
 }
 
 load {
-        format = "%1min"
+        format = "[ Load: %1min %5min %15min ]"
 }
 
 memory {
-        format = "%used | %available"
+        format = "[ Memory: %used / %available ]"
         threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+        format_degraded = "[ Memory: ⚠ %available ]"
+}
+
+read_file uptime {
+          path = "/proc/uptime"
+          format = "[ Uptime: %content ]"
+}
+
+cpu_usage {
+          format = "[ CPU: %usage ]"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "[ %A %Y-%m-%d %l:%M %P ]"
 }

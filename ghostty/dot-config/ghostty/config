@@ -37,6 +37,7 @@ window-vsync                   = true
 
 #focus-follows-mouse            = true
 #osc-color-report-format       = 16-bit
+mouse-shift-capture = false
 
 macos-icon                     = official
 macos-titlebar-style           = transparent

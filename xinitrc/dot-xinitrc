@@ -41,6 +41,8 @@ fi
 if [ -f /usr/bin/feh ]; then
   if [ -f ~/.wallpaper.png ]; then
     feh --bg-scale ~/.wallpaper.png &
+  elif [ -f ~/.tile-wallpaper.png ]; then
+    feh --bg-tile ~/.tile-wallpaper.png &
   fi
 fi
 
@@ -51,13 +53,13 @@ if [ -f /usr/bin/xset ]; then
 fi
 
 # enable window compositing
-if [ -f /usr/bin/compton ]; then
-  compton --fading --daemon --config "$HOME/.config/i3/compton.conf"
-fi
+#if [ -f /usr/bin/compton ]; then
+#  compton --fading --daemon --config "$HOME/.config/i3/compton.conf"
+#fi
 
-if [ -f /usr/bin/xcompmgr ]; then
-  /usr/bin/xcompmgr -c &
-fi
+#if [ -f /usr/bin/xcompmgr ]; then
+#  /usr/bin/xcompmgr -c &
+#fi
 
 # start redshift
 if [ -f /usr/bin/redshift ]; then
@@ -74,6 +76,11 @@ fi
 # if the xscreensaver config file exists start xscreensaver
 if [ -f ~/.xscreensaver ]; then
   /usr/bin/xscreensaver -nosplash &
+fi
+
+# USB etc auto mount disks
+if [ -f /usr/bin/udiskie ]; then
+  /usr/bin/udiskie &
 fi
 
 # start i3 and keep it running
