@@ -37,7 +37,7 @@ alias glances='glances --process-short-name'
 alias rsync='rsync --no-perms --exclude '.DS_Store' --exclude '.Trash-1000/' --info=progress2'
 alias 4c-dl='wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A png,gif,jpg,jpeg,webm'
 alias dir4files='du -a | cut -d/ -f2 | sort | uniq -c | sort -nr'
-alias syncmusic='rsync --no-perms --info=progress2 -ra /Volumes/Silo/Media/Music/ rsync://hastur/bunker/audio/music/'
+alias syncmusic="rsync --no-perms -ra --exclude '.Media Preferences.plist' --exclude '.DS_Store' --exclude '._*' --info=progress2"
 
 # Hugo aliases
 alias hugostamp='date +"%Y-%m-%d-%H%M"'

@@ -3,24 +3,24 @@
 PATHS=(${(s/:/)PATH})
 
 if type brew &>/dev/null; then
-  HOMEBREW_PREFIX="$(brew --prefix)"
-  export FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
-  eval "$(brew shellenv)"
+HOMEBREW_PREFIX="$(brew --prefix)"
+export FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
+eval "$(brew shellenv)"
 fi
 
 if type ghostty &>/dev/null; then
-  export TERMINAL="ghostty"
+export TERMINAL="ghostty"
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  PATHS=("/opt/homebrew/bin:/opt/homebrew/sbin" $PATHS[@])
-  PATHS=("/opt/homebrew/opt/m4/bin" $PATHS[@])
-  PATHS=("/opt/homebrew/opt/openjdk/bin" $PATHS[@])
-  PATHS=("/opt/homebrew/opt/bc/bin" $PATHS[@])
-  PATHS=("/opt/homebrew/opt/llvm/bin" $PATHS[@])
-  alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
+PATHS=("/opt/homebrew/bin:/opt/homebrew/sbin" $PATHS[@])
+PATHS=("/opt/homebrew/opt/m4/bin" $PATHS[@])
+PATHS=("/opt/homebrew/opt/openjdk/bin" $PATHS[@])
+PATHS=("/opt/homebrew/opt/bc/bin" $PATHS[@])
+PATHS=("/opt/homebrew/opt/llvm/bin" $PATHS[@])
+alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 elif command -v apt > /dev/null; then
-  PATHS+="/snap/bin"
+PATHS+="/snap/bin"
 fi
 
 PATHS=("$HOME/.bin" $PATHS[@])
@@ -29,20 +29,20 @@ PATHS=("$HOME/.local/bin" $PATHS[@])
 PATHS=("$HOME/bin/idea-IU-231.9225.16/bin" $PATHS[@])
 
 if [ -e $HOME/.atuin ]; then
-  PATHS=("$HOME/.atuin/bin" $PATHS[@])
+PATHS=("$HOME/.atuin/bin" $PATHS[@])
 fi
 
 if [ -e $HOME/.pyenv/shims ]; then
-  PATHS=("$HOME/.pyenv/shims" $PATHS[@])
+PATHS=("$HOME/.pyenv/shims" $PATHS[@])
 fi
 
 if [ -e /opt/neovim ]; then
-  PATHS=("/opt/neovim/bin" $PATHS[@])
-  export EDITOR=nvim
+PATHS=("/opt/neovim/bin" $PATHS[@])
+export EDITOR=nvim
 fi
 
 if [ -e $HOME/node_modules/.bin ]; then
-  PATHS=("$HOME/node_modules/.bin" $PATHS[@])
+PATHS=("$HOME/node_modules/.bin" $PATHS[@])
 fi
 
 UNIQPATHS=(${(u)PATHS[@]})
@@ -129,23 +129,23 @@ setopt EXTENDED_HISTORY
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    eza
-    git
-    colored-man-pages
-    colorize
-    cp
-    ssh-agent
-    gpg-agent
-    fzf
-    tmux
-    gradle
-    themes
-    aws
-    gradle
-    isodate
-    npm
-    nvm
-    )
+  eza
+  git
+  colored-man-pages
+  colorize
+  cp
+  ssh-agent
+  gpg-agent
+  fzf
+  tmux
+  gradle
+  themes
+  aws
+  gradle
+  isodate
+  npm
+  nvm
+  )
 
 zstyle ':omz:plugins:eza' 'dirs-first' yes
 zstyle ':omz:plugins:eza' 'git-status' yes
@@ -153,15 +153,15 @@ zstyle ':omz:plugins:eza' 'show-group' yes
 zstyle ':omz:plugins:eza' 'icons' no
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  export HOMEBREW_AUTO_UPDATE_SECS=3600
-  export HOMEBREW_NO_ENV_HINTS=1
-  plugins+=(macos xcode brew gnu-utils iterm2)
+export HOMEBREW_AUTO_UPDATE_SECS=3600
+export HOMEBREW_NO_ENV_HINTS=1
+plugins+=(macos xcode brew gnu-utils iterm2)
 elif command -v apt > /dev/null; then
-  plugins+=(debian fbterm)
+plugins+=(debian fbterm)
 fi
 
 if [[ "$TERM" == "xterm-ghostty" ]]; then
-  export TERM="xterm-256color"
+export TERM="xterm-256color"
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -200,56 +200,38 @@ if [ -e ~/.aliases.ytdl.sh ]; then
 	source ${HOME}/.aliases.ytdl.sh
 fi
 
-load_ssh_keys () {
-    if [ -e ~/.ssh/id_ed25519 ]; then
-    ssh-add ~/.ssh/id_ed25519
-    fi
-
-    if [ -e ~/.ssh/dbone_id_ed25519 ]; then
-    ssh-add ~/.ssh/dbone_id_ed25519
-    fi
-
-    if [ -e ~/.ssh/duane_bone_gmail_com_id_ed25519 ]; then
-    ssh-add ~/.ssh/duane_bone_gmail_com_id_ed25519
-    fi
-
-    if [ -e ~/.ssh/gnome_gitlab_ed25519 ]; then
-    ssh-add ~/.ssh/gnome_gitlab_ed25519
-    fi
-
-    if [ -e ~/.ssh/snhubone_github_id_ed25519 ]; then
-    ssh-add ~/.ssh/snhubone_github_id_ed25519
-    fi
-}
-
 if [[ -e "$HOME/.venv" ]]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    source "$HOME/.venv/bin/activate"
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
+  source "$HOME/.venv/bin/activate"
 fi
 
 if [ -e ~/.atuin.zsh ]; then
-    source ~/.atuin.zsh
+  source ~/.atuin.zsh
 fi
 
 if [ -e ~/.zshlocal ]; then
-  source ~/.zshlocal
+source ~/.zshlocal
+fi
+
+if [ -e ~/.ssh/add_keys.sh ]; then
+  source ~/.ssh/add_keys.sh
 fi
 
 if command -v starship > /dev/null; then
-    SPACESHIP_HOST_SHOW="always"
-    SPACESHIP_HOST_SHOW_FULL=false
-    export SPACESHIP_HOST_SHOW SPACESHIP_HOST_SHOW_FULL
-    alias launch_starship='eval "$(starship init zsh)"'
+  SPACESHIP_HOST_SHOW="always"
+  SPACESHIP_HOST_SHOW_FULL=false
+  export SPACESHIP_HOST_SHOW SPACESHIP_HOST_SHOW_FULL
+  alias launch_starship='eval "$(starship init zsh)"'
 fi
 
 function _umask_hook {
-  if [[ -n $UMASK ]]; then
-    umask "$UMASK"
-  elif [[ $OSTYPE == darwin* ]]; then
-    umask 0077
-  else
-    umask 0022
-  fi
+if [[ -n $UMASK ]]; then
+  umask "$UMASK"
+elif [[ $OSTYPE == darwin* ]]; then
+  umask 0077
+else
+  umask 0022
+fi
 }
 
 # Trigger the hook when the working directory changes
@@ -266,20 +248,27 @@ add-zsh-hook precmd _umask_hook
 #eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 if [ -e $HOME/.pyenv/shims ]; then
-  PATHS=("$HOME/.pyenv/shims" $PATHS[@])
+PATHS=("$HOME/.pyenv/shims" $PATHS[@])
 fi
 
 UNIQPATHS=(${(u)PATHS[@]})
 PATH=${(j.:.)UNIQPATHS}
-export PATH
 
-if [[ -e "$HOME/.venv" ]]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    source "$HOME/.venv/bin/activate"
+if [[ -e /opt/homebrew/share/zsh/site-functions ]]; then
+source /opt/homebrew/share/zsh/site-functions
 fi
 
-export NODE_PATH="$HOME/.node"
+export PATH
 
+# Python virtual environment
+if [[ -e "$HOME/.venv" ]]; then
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
+  source "$HOME/.venv/bin/activate"
+fi
+
+# Node.js environment setup
+export NODE_PATH="$HOME/.node"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
