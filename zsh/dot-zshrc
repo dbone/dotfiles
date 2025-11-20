@@ -1,4 +1,17 @@
 #!/usr/bin/zsh
+
+# Compiler flags.
+LDFLAGSs=()
+CPPFLAGSs=()
+
+LDFLAGSs=("-L/opt/homebrew/opt/binutils/lib" $LDFLAGSs[@])
+CPPFLAGSs=("-I/opt/homebrew/opt/binutils/include" $CPPFLAGSs[@])
+LDFLAGSs=("-L/opt/homebrew/opt/libxml2/lib" $LDFLAGSs[@])
+CPPFLAGSs=("-I/opt/homebrew/opt/libxml2/include" $CPPFLAGSs[@])
+
+LDFLAGS=${(j. .)LDFLAGSs}
+CPPFLAGS=${(j. .)CPPFLAGSs}
+
 # If you come from bash you might have to change your $PATH.
 PATHS=(${(s/:/)PATH})
 
@@ -18,6 +31,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
   PATHS=("/opt/homebrew/opt/openjdk/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/bc/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/llvm/bin" $PATHS[@])
+  PATHS=("/opt/homebrew/opt/binutils/bin" $PATHS[@])
+  PATHS=("/opt/homebrew/opt/libxml2/bin" $PATHS[@])
+  PATHS=("/opt/homebrew/opt/coreutils/libexec/gnubin" $PATHS[@])
   alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 elif command -v apt > /dev/null; then
 PATHS+="/snap/bin"
@@ -277,3 +293,7 @@ if command -v nvim &>/dev/null; then
 else
   export EDITOR=vim
 fi
+
+export PATH
+export LDFLAGS
+export CPPFLAGS
