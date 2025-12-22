@@ -701,7 +701,7 @@ This function is called at the very end of Spacemacs initialization."
           company-rtags company-web company-ycmd cond-let counsel counsel-css
           cpp-auto-include cyberpunk-theme cython-mode dakrone-theme dap-mode
           darkmine-theme darkokai-theme darktooth-theme dash deferred define-word
-          devdocs diff-hl diminish dired-quick-sort disable-mouse disaster
+          devdocs diminish dired-quick-sort disable-mouse disaster
           django-theme doom-themes dotenv-mode dracula-theme drag-stuff drupal-mode
           dumb-jump eat edit-indirect editorconfig ef-themes elisp-def elisp-demos
           elisp-slime-nav emacsql emmet-mode emojify emr epl esh-help
