@@ -299,5 +299,7 @@ export LDFLAGS
 export CPPFLAGS
 
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
+if command -v ng &>/dev/null; then
+  # Load Angular CLI autocompletion.
+  source <(ng completion script)
+fi
