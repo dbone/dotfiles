@@ -179,6 +179,10 @@ if [[ "$TERM" == "xterm-ghostty" ]]; then
   export TERM="xterm-256color"
 fi
 
+if command -v docker > /dev/null; then
+  plugins+=(docker)
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -298,8 +302,8 @@ export PATH
 export LDFLAGS
 export CPPFLAGS
 
-
 if command -v ng &>/dev/null; then
   # Load Angular CLI autocompletion.
   source <(ng completion script)
 fi
+
