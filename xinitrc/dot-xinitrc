@@ -46,6 +46,15 @@ if [ -f /usr/bin/feh ]; then
   fi
 fi
 
+# set the background
+if [ -f /usr/bin/feh ]; then
+  if [ -f ~/.wallpaper.jpg ]; then
+    feh --bg-scale ~/.wallpaper.jpg &
+  elif [ -f ~/.tile-wallpaper.jpg ]; then
+    feh --bg-tile ~/.tile-wallpaper.jpg &
+  fi
+fi
+
 # turn off the cpu default bell
 if [ -f /usr/bin/xset ]; then
   xset -b

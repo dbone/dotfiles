@@ -11,3 +11,18 @@ if [[ -f "$HOME/.atuin/bin/env" ]]; then
     source "$HOME/.atuin/bin/env"
 fi
 
+case "$TERM" in
+    xterm*)
+        if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+            export TERM=xterm-256color
+        elif [ -e /usr/share/terminfo/x/xterm-color ]; then
+            export TERM=xterm-color;
+        else
+            export TERM=xterm
+        fi
+        ;;
+    linux)
+        [ -n "$FBTERM" ] && export TERM=fbterm
+        ;;
+esac
+export TERM

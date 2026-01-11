@@ -68,3 +68,5 @@ confirm-close-surface          = false
 scrollback-limit               = 4200
 shell-integration              = zsh
 shell-integration-features     = cursor,sudo,ssh-env
+
+config-file = ?../ghostty-linux

@@ -1,5 +1,9 @@
-! Xft.dpi: 100
-Xft.dpi: 96
+!Xft.dpi: 100
+!Xft.dpi: 96
+!Xft.dpi: 120
+!
+! DELL AW3225QF ~ true dpi = 139 ppi
+!Xft.dpi: 96
 
 ! Font for regular texts.
 ! Font names are case-insensitive.

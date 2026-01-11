@@ -28,6 +28,9 @@ else
   alias edit='vim'
 fi
 
+alias fbterm='FBTERM=1 fbterm'
+alias blank='setterm -blank 0 -powersave off'
+
 alias stamp='date +"%Y%m%d"'
 alias date-stamp='date +"%Y-%m-%d"'
 alias date-time='date +"%Y%m%dT%H%M"'
