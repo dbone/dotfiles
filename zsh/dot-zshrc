@@ -171,17 +171,14 @@ elif command -v apt > /dev/null; then
   plugins+=(debian fbterm)
 fi
 
-<<<<<<< Updated upstream
-if [[ "$TERM" == "xterm-ghostty" ]]; then
-  export TERM="xterm-256color"
-fi
+#if [[ "$TERM" == "xterm-ghostty" ]]; then
+#  export TERM="xterm-256color"
+#fi
 
 if command -v docker > /dev/null; then
   plugins+=(docker)
 fi
 
-=======
->>>>>>> Stashed changes
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -306,34 +303,30 @@ if command -v ng &>/dev/null; then
   source <(ng completion script)
 fi
 
-<<<<<<< Updated upstream
-=======
-
 ##############################################################################
 # Try and correctlly set the terminal type.
 #
 
-if type ghostty &>/dev/null; then
-  export TERMINAL="ghostty"
-fi
+#if type ghostty &>/dev/null; then
+#  export TERMINAL="ghostty"
+#fi
 
-if [[ "$TERM" == "xterm-ghostty" ]]; then
-  export TERM="xterm-256color"
-fi
+#if [[ "$TERM" == "xterm-ghostty" ]]; then
+#  export TERM="xterm-256color"
+#fi
 
-case "$TERM" in
-    xterm*)
-        if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-            export TERM=xterm-256color
-        elif [ -e /usr/share/terminfo/x/xterm-color ]; then
-            export TERM=xterm-color;
-        else
-            export TERM=xterm
-        fi
-        ;;
-    linux)
-        [ -n "$FBTERM" ] && export TERM=fbterm-256color
-        ;;
-esac
+#case "$TERM" in
+#    xterm*)
+#        if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+#            export TERM=xterm-256color
+#        elif [ -e /usr/share/terminfo/x/xterm-color ]; then
+#            export TERM=xterm-color;
+#        else
+#            export TERM=xterm
+#        fi
+#        ;;
+#    linux)
+#        [ -n "$FBTERM" ] && export TERM=fbterm-256color
+#        ;;
+#esac
 
->>>>>>> Stashed changes
