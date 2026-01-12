@@ -1,0 +1,20 @@
+[cmdline]
+0=
+
+[input2]
+0=/home/dbone
+
+[input-def]
+0=*
+
+[Dir Hist New Right Panel]
+0=/home/dbone/.config/mc
+1=/home/dbone
+
+[Dir Hist New Left Panel]
+0=/home/dbone/.config/mc
+1=/home/dbone/.config
+2=/home/dbone/.cache
+3=/home/dbone/.gnupg
+4=/home/dbone/.ssh
+5=/home/dbone
