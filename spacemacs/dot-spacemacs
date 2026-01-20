@@ -34,7 +34,10 @@ This function should only modify configuration layer settings."
 
     ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
-    '(graphviz
+    '(typescript
+       javascript
+       typescript
+       graphviz
        toml
        ;; ----------------------------------------------------------------
        ;; Example of useful layers you may want to use right away.
@@ -42,6 +45,8 @@ This function should only modify configuration layer settings."
        ;; `M-m f e R' (Emacs style) to install them.
        ;; ----------------------------------------------------------------
        ;;projectile
+       lsp
+       docker
        helm
        better-defaults
        auto-completion
@@ -60,7 +65,6 @@ This function should only modify configuration layer settings."
        emacs-lisp
        python
        yaml
-       json
        sql
        (java :variables java-backend 'lsp)
        (dap :variables
@@ -82,7 +86,10 @@ This function should only modify configuration layer settings."
     ;; `dotspacemacs/user-config'. To use a local version of a package, use the
     ;; `:location' property: '(your-package :location "~/path/to/your-package/")
     ;; Also include the dependencies as they will not be resolved automatically.
-    dotspacemacs-additional-packages '(editorconfig helm-xref)
+    dotspacemacs-additional-packages '(
+                                        editorconfig
+                                        helm-xref
+                                        )
 
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '()
@@ -293,19 +300,19 @@ It should only modify the values of Spacemacs settings."
 
     ;; The leader key (default "SPC")
     ;; dotspacemacs-leader-key "SPC"
-    dotspacemacs-leader-key "SPC"
+    dotspacemacs-leader-key "M-m"
 
     ;; The key used for Emacs commands `M-x' (after pressing on the leader key).
     ;; (default "SPC")
-    dotspacemacs-emacs-command-key "SPC"
+    dotspacemacs-emacs-command-key "M-x"
 
     ;; The key used for Vim Ex commands (default ":")
     dotspacemacs-ex-command-key ":"
 
     ;; The leader key accessible in `emacs state' and `insert state'
     ;; (default "M-m")
-    ;; dotspacemacs-emacs-leader-key "M-m"
-    dotspacemacs-emacs-leader-key "C-p"
+    dotspacemacs-emacs-leader-key "M-m"
+    ;; dotspacemacs-emacs-leader-key "C-p"
 
     ;; Major mode leader key is a shortcut key which is the equivalent of
     ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
@@ -610,6 +617,12 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq initial-frame-alist '((top . 30) (left . 700) (width . 212) (height . 81)))
   (setenv "LANG" "en_US")
   (setq ispell-dictionary "en_US")
+  ;; Font settings per OS
+  (when (eq system-type 'gnu/linux)
+    (setq-default
+      dotspacemacs-default-font '("IosevkaTerm Nerd Font Mono" :size 16 :weight normal :width normal)
+      )
+    )
 
   ;; Recognize .projectile as the primary project marker
   ;;(setq projectile-project-root-files #'.projectile)
@@ -701,9 +714,9 @@ This function is called at the very end of Spacemacs initialization."
           company-rtags company-web company-ycmd cond-let counsel counsel-css
           cpp-auto-include cyberpunk-theme cython-mode dakrone-theme dap-mode
           darkmine-theme darkokai-theme darktooth-theme dash deferred define-word
-          devdocs diminish dired-quick-sort disable-mouse disaster
-          django-theme doom-themes dotenv-mode dracula-theme drag-stuff drupal-mode
-          dumb-jump eat edit-indirect editorconfig ef-themes elisp-def elisp-demos
+          devdocs diminish dired-quick-sort disable-mouse disaster django-theme
+          doom-themes dotenv-mode dracula-theme drag-stuff drupal-mode dumb-jump
+          eat edit-indirect editorconfig ef-themes elisp-def elisp-demos
           elisp-slime-nav emacsql emmet-mode emojify emr epl esh-help
           eshell-prompt-extras eshell-z espresso-theme eval-sexp-fu evil evil-anzu
           evil-args evil-cleverparens evil-collection evil-escape
@@ -715,27 +728,29 @@ This function is called at the very end of Spacemacs initialization."
           farmhouse-themes flatland-theme flatui-theme flx-ido flycheck
           flycheck-elsa flycheck-package flycheck-pos-tip flycheck-rtags
           flycheck-ycmd flyspell-correct flyspell-correct-helm forge gandalf-theme
-          geben gendoxy gh-md ghub git-link git-messenger git-modes git-timemachine
-          gitignore-templates gntp gnuplot golden-ratio google-c-style
-          google-translate gotham-theme goto-chg grandshell-theme graphviz-dot-mode
-          groovy-imports groovy-mode gruber-darker-theme gruvbox-theme haml-mode
-          hc-zenburn-theme helm helm-ag helm-c-yasnippet helm-comint helm-company
-          helm-core helm-css-scss helm-ctest helm-descbinds helm-git-grep
-          helm-ls-git helm-lsp helm-make helm-mode-manager helm-org helm-org-rifle
-          helm-projectile helm-purpose helm-pydoc helm-rtags helm-swoop helm-themes
-          helm-xref hemisu-theme heroku-theme hide-comnt highlight-indentation
-          highlight-numbers highlight-parentheses hl-todo holy-mode ht htmlize
-          hungry-delete hybrid-mode hydra iedit imenu-list impatient-mode
-          importmagic indent-guide info+ inkpot-theme inspector ir-black-theme ivy
-          jazz-theme jbeans-theme json-mode json-navigator json-reformat
-          json-snatcher kaolin-themes light-soap-theme link-hint list-utils
-          live-py-mode llama load-env-vars log4e lorem-ipsum lsp-docker lsp-java
-          lsp-mode lsp-origami lsp-treemacs lsp-ui lush-theme lv macrostep
-          madhat2r-theme magit magit-section majapahit-themes markdown-mode
-          markdown-toc material-theme mathjax maven-test-mode meghanada
-          minimal-theme modus-themes moe-theme molokai-theme monochrome-theme
-          monokai-theme multi-line multi-term multi-vterm mustang-theme mvn mwim
-          nameless naquadah-theme noctilux-theme obsidian-theme occidental-theme
+          geben gendoxy ggtags gh-md ghub git-link git-messenger git-modes
+          git-timemachine gitignore-templates gntp gnuplot golden-ratio
+          google-c-style google-translate gotham-theme goto-chg grandshell-theme
+          graphviz-dot-mode grizzl groovy-imports groovy-mode gruber-darker-theme
+          gruvbox-theme haml-mode hc-zenburn-theme helm helm-ag helm-c-yasnippet
+          helm-comint helm-company helm-core helm-css-scss helm-ctest
+          helm-descbinds helm-git-grep helm-ls-git helm-lsp helm-make
+          helm-mode-manager helm-org helm-org-rifle helm-projectile helm-purpose
+          helm-pydoc helm-rtags helm-swoop helm-themes helm-xref hemisu-theme
+          heroku-theme hide-comnt highlight-indentation highlight-numbers
+          highlight-parentheses hl-todo holy-mode ht htmlize hungry-delete
+          hybrid-mode hydra iedit imenu-list impatient-mode import-js importmagic
+          indent-guide info+ inkpot-theme inspector ir-black-theme ivy jazz-theme
+          jbeans-theme js-doc js2-mode js2-refactor json-mode json-navigator
+          json-reformat json-snatcher kaolin-themes light-soap-theme link-hint
+          list-utils live-py-mode livid-mode llama load-env-vars log4e lorem-ipsum
+          lsp-docker lsp-java lsp-mode lsp-origami lsp-treemacs lsp-ui lush-theme
+          lv macrostep madhat2r-theme magit magit-section majapahit-themes
+          markdown-mode markdown-toc material-theme mathjax maven-test-mode
+          meghanada minimal-theme modus-themes moe-theme molokai-theme
+          monochrome-theme monokai-theme multi-line multi-term multi-vterm
+          multiple-cursors mustang-theme mvn mwim nameless naquadah-theme
+          noctilux-theme nodejs-repl npm-mode obsidian-theme occidental-theme
           oldlace-theme omtose-phellack-themes open-junk-file org
           org-category-capture org-cliplink org-contrib org-download org-mime
           org-pomodoro org-present org-project-capture org-projectile org-rich-yank
@@ -749,23 +764,26 @@ This function is called at the very end of Spacemacs initialization."
           pyenv-mode pylookup pytest python-pytest pythonic pyvenv queue quickrun
           railscasts-theme rainbow-delimiters rebecca-theme request
           request-deferred restart-emacs reverse-theme ron-mode rtags rustic s
-          sass-mode scss-mode seti-theme shell-pop shut-up simple-httpd slim-mode
-          smartparens smeargle smyx-theme soft-charcoal-theme soft-morning-theme
-          soft-stone-theme solarized-theme soothe-theme space-doc spacegray-theme
-          spaceline spacemacs-purpose-popwin spacemacs-whitespace-cleanup
-          sphinx-doc spinner sql-indent string-edit-at-point string-inflection
-          subatomic-theme subatomic256-theme sublime-themes sunny-day-theme swiper
-          symbol-overlay symon tagedit tango-2-theme tango-plus-theme
-          tangotango-theme tao-theme term-cursor terminal-here toc-org tomelr
-          toml-mode toxi-theme transient treemacs treemacs-icons-dired
-          treemacs-magit treemacs-persp treemacs-projectile treepy
-          twilight-anti-bright-theme twilight-bright-theme twilight-theme
-          ujelly-theme underwater-theme undo-fu undo-fu-session undo-tree unfill
-          uuidgen vi-tilde-fringe vim-powerline visual-fill-column
+          sass-mode scss-mode seti-theme shell-pop shut-up simple-httpd skewer-mode
+          slim-mode smartparens smeargle smyx-theme soft-charcoal-theme
+          soft-morning-theme soft-stone-theme solarized-theme soothe-theme
+          space-doc spacegray-theme spaceline spacemacs-purpose-popwin
+          spacemacs-whitespace-cleanup sphinx-doc spinner sql-indent
+          string-edit-at-point string-inflection subatomic-theme subatomic256-theme
+          sublime-themes sunny-day-theme swiper symbol-overlay symon tagedit
+          tango-2-theme tango-plus-theme tangotango-theme tao-theme term-cursor
+          terminal-here tern toc-org tomelr toml-mode toxi-theme transient treemacs
+          treemacs-icons-dired treemacs-magit treemacs-persp treemacs-projectile
+          treepy twilight-anti-bright-theme twilight-bright-theme twilight-theme
+          typescript-mode ujelly-theme underwater-theme undo-fu undo-fu-session
+          undo-tree unfill uuidgen vi-tilde-fringe vim-powerline visual-fill-column
           volatile-highlights vterm vundo web-beautify web-completion-data web-mode
           wfnames wgrep which-key white-sand-theme window-purpose winum with-editor
           writeroom-mode ws-butler xref yaml yaml-mode yapfify yasnippet
-          yasnippet-snippets ycmd zen-and-art-theme zenburn-theme zonokai-emacs)))
+          yasnippet-snippets ycmd zen-and-art-theme zenburn-theme zonokai-emacs))
+    '(safe-local-variable-values
+       '((js2-basic-offset . 2) (javascript-backend . tide) (javascript-backend . tern)
+          (javascript-backend . lsp))))
   (custom-set-faces
     ;; custom-set-faces was added by Custom.
     ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,10 +1,8 @@
 #!/bin/sh
 
-export GTK_THEME="Adwaita:dark"
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 export GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
-export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -20,6 +18,7 @@ if [ -f $sysmodmap ]; then
   xmodmap $sysmodmap
 fi
 
+# merge un user setting and keymaps
 if [ -f "$userresources" ]; then
   xrdb -merge "$userresources"
 fi
@@ -28,68 +27,48 @@ if [ -f "$usermodmap" ]; then
   xmodmap "$usermodmap"
 fi
 
-# start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-    # shellcheck source=/dev/null
+  for f in /etc/X11/xinit/xinitrc.d/*; do
     [ -x "$f" ] && . "$f"
   done
   unset f
 fi
 
-# set the background
-if [ -f /usr/bin/feh ]; then
-  if [ -f ~/.wallpaper.png ]; then
-    feh --bg-scale ~/.wallpaper.png &
-  elif [ -f ~/.tile-wallpaper.png ]; then
-    feh --bg-tile ~/.tile-wallpaper.png &
+# Handle stuff for i3
+if [[ "$WM" == "i3wm" ]]; then
+  # set the background
+  if [ -f /usr/bin/feh ]; then
+    if [ -f ~/.wallpaper.png ]; then
+      feh --bg-scale ~/.wallpaper.png &
+    elif [ -f ~/.tile-wallpaper.png ]; then
+      feh --bg-tile ~/.tile-wallpaper.png &
+    fi
   fi
-fi
 
-# set the background
-if [ -f /usr/bin/feh ]; then
-  if [ -f ~/.wallpaper.jpg ]; then
-    feh --bg-scale ~/.wallpaper.jpg &
-  elif [ -f ~/.tile-wallpaper.jpg ]; then
-    feh --bg-tile ~/.tile-wallpaper.jpg &
+  # set the background
+  if [ -f /usr/bin/feh ]; then
+    if [ -f ~/.wallpaper.jpg ]; then
+      feh --bg-scale ~/.wallpaper.jpg &
+    elif [ -f ~/.tile-wallpaper.jpg ]; then
+      feh --bg-tile ~/.tile-wallpaper.jpg &
+    fi
   fi
-fi
 
-# turn off the cpu default bell
-if [ -f /usr/bin/xset ]; then
-  xset -b
-  xset dpms 0 0 600 # 1200
-fi
+  # turn off the cpu default bell
+  if [ -f /usr/bin/xset ]; then
+    xset -b
+    xset dpms 0 0 600 # 1200
+  fi
+  # start redshift
+  if [ -f /usr/bin/redshift ]; then
+    redshift &
+  fi
 
-# enable window compositing
-#if [ -f /usr/bin/compton ]; then
-#  compton --fading --daemon --config "$HOME/.config/i3/compton.conf"
-#fi
+  # if the xscreensaver config file exists start xscreensaver
+  if [ -f ~/.xscreensaver ]; then
+    /usr/bin/xscreensaver -nosplash &
+  fi
 
-#if [ -f /usr/bin/xcompmgr ]; then
-#  /usr/bin/xcompmgr -c &
-#fi
-
-# start redshift
-if [ -f /usr/bin/redshift ]; then
-  redshift &
-fi
-
-# start Gnome keyring
-if [ -f /usr/bin/gnome-keyring-daemon ]; then
-  dbus-update-activation-environment --systemd DISPLAY
-  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-  export SSH_AUTH_SOCK
-fi
-
-# if the xscreensaver config file exists start xscreensaver
-if [ -f ~/.xscreensaver ]; then
-  /usr/bin/xscreensaver -nosplash &
-fi
-
-if [[ "$XFCE" != "" ]]; then
-  exec startxfce4
-else
   # USB etc auto mount disks
   if [ -f /usr/bin/udiskie ]; then
     /usr/bin/udiskie &
@@ -98,4 +77,15 @@ else
   if [ -f /usr/bin/i3 ]; then
     exec i3
   fi
+fi
+
+# start Gnome keyring
+#if [ -f /usr/bin/gnome-keyring-daemon ]; then
+#  dbus-update-activation-environment --systemd DISPLAY
+#  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+#  export SSH_AUTH_SOCK
+#fi
+
+if [[ "$WM" == "xfce" ]]; then
+  exec startxfce4
 fi

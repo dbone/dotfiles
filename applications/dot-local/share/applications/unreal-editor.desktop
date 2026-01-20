@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Unreal Engine Editor
+Comment=Launch Unreal Editor
+Categories=Development;GameDevelopment;
+Terminal=false
+Exec=/home/dbone/UnrealEngine/Engine/Binaries/Linux/UnrealEditor
+Path=/home/dbone/UnrealEngine
+Icon=/home/dbone/UnrealEngine/Engine/Source/Runtime/Launch/Resources/Linux/UnrealEngine.png
+MimeType=application/unreal-editor-project

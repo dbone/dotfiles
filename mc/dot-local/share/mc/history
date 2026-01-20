@@ -1,15 +1,18 @@
-[cmdline]
-0=
-
 [input2]
 0=/home/dbone
 
 [input-def]
 0=*
 
+[cmdline]
+0=l
+1=
+
 [Dir Hist New Right Panel]
 0=/home/dbone/.config/mc
 1=/home/dbone
+2=/home/dbone/.dotfiles
+3=/home/dbone/FONTS
 
 [Dir Hist New Left Panel]
 0=/home/dbone/.config/mc
@@ -18,3 +21,5 @@
 3=/home/dbone/.gnupg
 4=/home/dbone/.ssh
 5=/home/dbone
+6=/home/dbone/.dotfiles
+7=/home/dbone/FONTS

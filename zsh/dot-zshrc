@@ -171,10 +171,6 @@ elif command -v apt > /dev/null; then
   plugins+=(debian fbterm)
 fi
 
-#if [[ "$TERM" == "xterm-ghostty" ]]; then
-#  export TERM="xterm-256color"
-#fi
-
 if command -v docker > /dev/null; then
   plugins+=(docker)
 fi
@@ -250,10 +246,10 @@ fi
 }
 
 # Trigger the hook when the working directory changes
-add-zsh-hook chpwd _umask_hook
+#add-zsh-hook chpwd _umask_hook
 
 # Ensure the hook runs on shell startup
-add-zsh-hook precmd _umask_hook
+#add-zsh-hook precmd _umask_hook
 
 #if command -v jenv > /dev/null; then
 #  export PATH="$HOME/.jenv/bin:$PATH"
@@ -298,7 +294,7 @@ export PATH
 export LDFLAGS
 export CPPFLAGS
 
-if command -v ng &>/dev/null; then
+if command -v ng --version &>/dev/null; then
   # Load Angular CLI autocompletion.
   source <(ng completion script)
 fi
@@ -311,9 +307,9 @@ fi
 #  export TERMINAL="ghostty"
 #fi
 
-#if [[ "$TERM" == "xterm-ghostty" ]]; then
-#  export TERM="xterm-256color"
-#fi
+if [[ "$TERM" == "xterm-ghostty" ]]; then
+  export TERM="xterm-256color"
+fi
 
 #case "$TERM" in
 #    xterm*)
@@ -329,4 +325,8 @@ fi
 #        [ -n "$FBTERM" ] && export TERM=fbterm-256color
 #        ;;
 #esac
+
+if [[ "$IN_FBTERM" == "1" && "$TERM_PROGRAM" != "tmux" ]]; then
+    export TERM=fbterm-256color
+fi
 

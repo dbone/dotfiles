@@ -4,12 +4,13 @@ if [[ $(uname) == "Darwin" ]]; then
   alias ssh-add='/usr/bin/ssh-add'
   alias ssh='/usr/bin/ssh'
 elif [[ $(uname) == "Linux" ]]; then
+  alias open='xdg-open'
   alias lnxclear_cache='sudo sync; sudo sh -c '\''echo 1 > /proc/sys/vm/drop_caches'\'
   alias mailtail='multitail -cS postfix /var/log/mail.log ~/.procmail/log.txt'
   alias maillog='sudo multitail -cS postfix /var/log/mail.log'
   alias weblog='sudo multitail /var/log/apache2/*.log'
   alias faillog='sudo multitail /var/log/fail2ban.log /var/log/syslog /var/log/auth.log'
-  alias quodlibet='GTK_THEME=Adwaita:light quodlibet'
+  #  alias quodlibet='GTK_THEME=Adwaita:light quodlibet'
   alias pine='alpine'
 fi
 
@@ -28,7 +29,7 @@ else
   alias edit='vim'
 fi
 
-alias fbterm='FBTERM=1 fbterm'
+alias fbterm='exec env IN_FBTERM=1 TERM=fbterm-256color fbterm'
 alias blank='setterm -blank 0 -powersave off'
 
 alias stamp='date +"%Y%m%d"'

@@ -1,13 +1,15 @@
-
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 if [[ -d "$HOME/.local/bin" ]] ; then
-    PATH="$HOME/.local/bin:$PATH"
+  PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
-    source "$HOME/.atuin/bin/env"
+  source "$HOME/.atuin/bin/env"
 fi
 
+#if [[ -z "$IN_FBTERM" && "$(tty)" == "/dev/tty1" ]]; then
+#  exec env IN_FBTERM=1 TERM=fbterm-256color fbterm
+#fi
