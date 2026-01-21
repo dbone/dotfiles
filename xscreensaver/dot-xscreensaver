@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.10 for dbone on Tue Oct  7 20:24:14 2025.
+# Written by xscreensaver-settings 6.10 for dbone on Fri Oct  3 04:18:38 2025.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -37,7 +37,7 @@ textFile:
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	0,33 2516,845
+settingsGeom:	1925,43 2226,1520
 
 programs:								      \
 -				maze --root				    \n\
@@ -128,9 +128,9 @@ programs:								      \
 -				squiral --root				    \n\
 -				wander --root				    \n\
 -				xflame --root				    \n\
-				xmatrix --root --small --no-trace	      \
-				  --no-knock-knock --delay 58197	      \
-				  --density 19				    \n\
+				xmatrix --root --no-trace		      \
+				  --no-knock-knock --delay 27049	      \
+				  --density 52				    \n\
 - GL: 				gflux --root				    \n\
 -				nerverot --root				    \n\
 -				xrayswarm --root			    \n\
@@ -184,7 +184,7 @@ programs:								      \
 -				fontglide --root			    \n\
 - GL: 				gleidescope --root			    \n\
 - GL: 				glknots --root				    \n\
-- GL: 				glmatrix --root				    \n\
+- GL: 				glmatrix --root --density 45 --speed 2.607  \n\
 - GL: 				glslideshow --root			    \n\
 - GL: 				hypertorus --root			    \n\
 - GL: 				jigglypuff --root			    \n\
@@ -246,7 +246,8 @@ programs:								      \
 -				hexadrop --root				    \n\
 - GL: 				kaleidocycle --root			    \n\
 - GL: 				quasicrystal --root			    \n\
-- GL: 				unknownpleasures --root			    \n\
+- GL: 				unknownpleasures --root --speed 5.672	      \
+				  --resolution 198 --amplitude 0.156	    \n\
 -				binaryring --root			    \n\
 - GL: 				cityflow --root				    \n\
 - GL: 				geodesicgears --root			    \n\
@@ -286,7 +287,7 @@ programs:								      \
 -				binaryhorizon --root			    \n\
 -				marbling --root				    \n\
 - GL: 				chompytower --root			    \n\
-- GL: 				hextrail --root				    \n\
+- GL: 				hextrail --root --speed 10.344 --count 33   \n\
 - GL: 				mapscroller --root			    \n\
 - GL: 				nakagin --root				    \n\
 - GL: 				squirtorus --root			    \n\
