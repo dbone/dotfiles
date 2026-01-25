@@ -9,6 +9,14 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+# Ensure the systemd user session knows about your X display
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+  eval $(dbus-launch --sh-syntax --exit-with-session)
+fi
+
+# Crucial: Import variables so systemd services can "see" your screen
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
   xrdb -merge $sysresources
