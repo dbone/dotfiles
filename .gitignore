@@ -1,2 +1,3 @@
 .DS_Store
 tmux/dot-tmux/plugins/tmux-*
+mc/dot-local/share/mc/history
