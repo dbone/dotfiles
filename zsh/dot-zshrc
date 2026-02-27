@@ -30,6 +30,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   PATHS=("/opt/homebrew/opt/binutils/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/libxml2/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/coreutils/libexec/gnubin" $PATHS[@])
+  PATHS=("/opt/homebrew/opt/make/libexec/gnubin" $PATHS[@])
   alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 elif command -v apt > /dev/null; then
 PATHS+="/snap/bin"
