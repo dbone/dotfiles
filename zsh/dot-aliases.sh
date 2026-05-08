@@ -3,6 +3,10 @@ if [[ $(uname) == "Darwin" ]]; then
   alias sshadd='/usr/bin/ssh-add --apple-use-keychain'
   alias ssh-add='/usr/bin/ssh-add'
   alias ssh='/usr/bin/ssh'
+  alias gopsql='LC_ALL="en_US.UTF-8" /opt/homebrew/opt/postgresql@18/bin/postgres -D /opt/homebrew/var/postgresql@18'
+  if type "gtar" >/dev/null; then
+    alias tar='gtar'
+  fi
 elif [[ $(uname) == "Linux" ]]; then
   alias open='xdg-open'
   alias lnxclear_cache='sudo sync; sudo sh -c '\''echo 1 > /proc/sys/vm/drop_caches'\'
@@ -38,7 +42,7 @@ alias date-time='date +"%Y%m%dT%H%M"'
 alias date-time-stamp='date +"%Y%m%d-%H%M%S"'
 alias treea="tree --charset=ascii"
 alias glances='glances --process-short-name'
-alias rsync='rsync --no-perms --exclude '.DS_Store' --exclude '.Trash-1000/' --info=progress2'
+alias rsync='rsync --no-perms --exclude '.stfolder' --exclude '.DS_Store' --exclude '.Trash-1000/' --info=progress2'
 alias 4c-dl='wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A png,gif,jpg,jpeg,webm'
 alias dir4files='du -a | cut -d/ -f2 | sort | uniq -c | sort -nr'
 alias syncmusic="rsync --no-perms -ra --exclude '.Media Preferences.plist' --exclude '.DS_Store' --exclude '._*' --info=progress2"
@@ -68,7 +72,9 @@ if [[ -f /usr/libexec/java_hom ]]; then
   #alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
   #alias j10="export JAVA_HOME=`/usr/libexec/java_home -v 10`; java -version"
   alias j11="export JAVA_HOME=$(/usr/libexec/java_home -v 11); java -version"
-  export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+  alias java17='export JAVA_HOME=$(/usr/libexec/java_home -v 17)'
+  alias java25='export JAVA_HOME=$(/usr/libexec/java_home -v 25)'
+  export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 fi
 
 if [[ $(uname) == "Darwin" ]]; then

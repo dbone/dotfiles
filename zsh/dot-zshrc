@@ -23,6 +23,7 @@ fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
   PATHS=("/opt/homebrew/bin:/opt/homebrew/sbin" $PATHS[@])
+  PATHS=("/opt/homebrew/opt/zip/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/m4/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/openjdk/bin" $PATHS[@])
   PATHS=("/opt/homebrew/opt/bc/bin" $PATHS[@])
@@ -240,20 +241,20 @@ if command -v starship > /dev/null; then
 fi
 
 function _umask_hook {
-if [[ -n $UMASK ]]; then
-  umask "$UMASK"
-elif [[ $OSTYPE == darwin* ]]; then
-  umask 0077
-else
-  umask 0022
-fi
+  if [[ -n $UMASK ]]; then
+    umask "$UMASK"
+  elif [[ $OSTYPE == darwin* ]]; then
+    umask 007
+  else
+    umask 002
+  fi
 }
 
 # Trigger the hook when the working directory changes
 #add-zsh-hook chpwd _umask_hook
 
 # Ensure the hook runs on shell startup
-#add-zsh-hook precmd _umask_hook
+add-zsh-hook precmd _umask_hook
 
 #if command -v jenv > /dev/null; then
 #  export PATH="$HOME/.jenv/bin:$PATH"
@@ -334,3 +335,4 @@ if [[ "$IN_FBTERM" == "1" && "$TERM_PROGRAM" != "tmux" ]]; then
     export TERM=fbterm-256color
 fi
 
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
