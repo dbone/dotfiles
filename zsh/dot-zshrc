@@ -241,13 +241,18 @@ if command -v starship > /dev/null; then
 fi
 
 function _umask_hook {
-  if [[ -n $UMASK ]]; then
-    umask "$UMASK"
-  elif [[ $OSTYPE == darwin* ]]; then
-    umask 007
-  else
-    umask 002
+  if [[ $OSTYPE = darwin* ]]; then
+    umask 027
+  elif [[ $OSTYPE == linux-gnu* ]]; then
+    umask 077
   fi
+#  if [[ -n $UMASK ]]; then
+#    umask "$UMASK"
+#  elif [[ $OSTYPE == darwin* ]]; then
+#    umask 007
+#  else
+#    umask 002
+#  fi
 }
 
 # Trigger the hook when the working directory changes
